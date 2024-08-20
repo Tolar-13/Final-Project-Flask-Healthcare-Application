@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Income Analysis Survey</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden; /* Prevent scrolling */
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            text-align: center;
+        }
+        .form-container h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .form-container label {
+            display: block;
+            margin-bottom: 8px;
+            color: #666;
+            text-align: left;
+        }
+        .form-container input[type="text"],
+        .form-container input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-container input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .form-container input[type="submit"] {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .form-container input[type="submit"]:hover {
+            background-color: #218838;
+        }
+        .expense-group {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .expense-group input[type="number"] {
+            width: 60%;
+        }
+    </style>
+    <script>
+        function toggleTextbox(checkbox, textboxId) {
+            var textbox = document.getElementById(textboxId);
+            textbox.disabled = !checkbox.checked;
+            if (!checkbox.checked) {
+                textbox.value = '';  // Clear the textbox if unchecked
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Income Survey</h2>
+        <form action="/" method="POST">
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+
+            <label for="gender">Gender:</label>
+            <input type="text" id="gender" name="gender" required>
+
+            <label for="total_income">Total Income:</label>
+            <input type="number" id="total_income" name="total_income" step="0.01" required>
+
+            <label>Expenses:</label>
+            
+            <div class="expense-group">
+                <input type="checkbox" id="utilities_cb" name="utilities_cb" onclick="toggleTextbox(this, 'utilities')">
+                <label for="utilities_cb" style="flex-grow: 1;">Utilities:</label>
+                <input type="number" id="utilities" name="utilities" step="0.01" disabled>
+            </div>
+            
+            <div class="expense-group">
+                <input type="checkbox" id="entertainment_cb" name="entertainment_cb" onclick="toggleTextbox(this, 'entertainment')">
+                <label for="entertainment_cb" style="flex-grow: 1;">Entertainment:</label>
+                <input type="number" id="entertainment" name="entertainment" step="0.01" disabled>
+            </div>
+            
+            <div class="expense-group">
+                <input type="checkbox" id="school_fees_cb" name="school_fees_cb" onclick="toggleTextbox(this, 'school_fees')">
+                <label for="school_fees_cb" style="flex-grow: 1;">School Fees:</label>
+                <input type="number" id="school_fees" name="school_fees" step="0.01" disabled>
+            </div>
+            
+            <div class="expense-group">
+                <input type="checkbox" id="shopping_cb" name="shopping_cb" onclick="toggleTextbox(this, 'shopping')">
+                <label for="shopping_cb" style="flex-grow: 1;">Shopping:</label>
+                <input type="number" id="shopping" name="shopping" step="0.01" disabled>
+            </div>
+            
+            <div class="expense-group">
+                <input type="checkbox" id="healthcare_cb" name="healthcare_cb" onclick="toggleTextbox(this, 'healthcare')">
+                <label for="healthcare_cb" style="flex-grow: 1;">Healthcare:</label>
+                <input type="number" id="healthcare" name="healthcare" step="0.01" disabled>
+            </div>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>
