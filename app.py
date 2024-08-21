@@ -8,7 +8,7 @@ from pymongo import MongoClient
 application = Flask(__name__)
 
 # MongoDB setup using MongodbAtlas
-client = MongoClient("mongodb+srv://detlaalade:cAJkpMdK1jIp37RP@finalproject.b403o.mongodb.net/?retryWrites=true&w=majority&appName=FinalProject")
+client = MongoClient('mongodb+srv://detlaalade:cAJkpMdK1jIp37RP@finalproject.b403o.mongodb.net/?retryWrites=true&w=majority&appName=FinalProject')
 db = client['income_analysis']
 collection = db['survey_data']
 
